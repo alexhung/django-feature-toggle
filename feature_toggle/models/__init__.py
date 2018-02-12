@@ -1,2 +1,2 @@
-from featuretoggle import FeatureToggle
-from featuretoggle_attribute import FeatureToggleAttribute
+from .featuretoggle import FeatureToggle
+from .featuretoggle_attribute import FeatureToggleAttribute
