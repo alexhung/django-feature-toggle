@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
-from djutil.models import TimeStampedModel
+from django.utils.translation import ugettext_lazy as _
 
 from feature_toggle.exceptions import FeatureToggleAttributeDoesNotExist, FeatureToggleAttributeAlreadyExists
 from feature_toggle import constants
@@ -9,11 +9,13 @@ from feature_toggle.utilities import format_to_date
 from feature_toggle.validators import validate_feature_toggle_code
 
 
-class FeatureToggle(TimeStampedModel):
+class FeatureToggle(models.Model):
     name = models.CharField(max_length=20)
     code = models.CharField(max_length=20, validators=[validate_feature_toggle_code])
     environment = models.CharField(max_length=50, choices=constants.FeatureToggle.Environment.CHOICES)
     is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(_("Created at"), auto_now_add=True)
+    modified_at = models.DateTimeField(_("Modified at"), auto_now=True)
 
     def __str__(self):
         return "{name}({code}) | {env}".format(name=self.name, code=self.code, env=self.environment)

@@ -15,7 +15,7 @@ setup(
     license='GNU GPLv3',
     description='A simple Django app based on Feature Toggle described by Martin Fowler.',
     long_description=README,
-    url='https://github.com/thulasi-ram/django-feature-toggle',
+    url='https://github.com/alexhung/django-feature-toggle',
     author='Damodharan Thulasiram',
     author_email='thulasi503@gmail.com',
     classifiers=[
